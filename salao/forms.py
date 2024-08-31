@@ -3,14 +3,15 @@ from .models import Salao
 
 class SalaoForm(forms.ModelForm):
   # Define your form fields here
-  nome = forms.TextInput(max_length=100)
-  endereco = forms.TextInput(max_length=200)
-  descricao = forms.Textarea()
-  CNPJ = forms.TextInput(max_length=14)
-  telefone = forms.TextInput(max_length=15)
+  nome = forms.CharField(max_length=100, required=True)
+  endereco = forms.CharField(max_length=200, required=True)
+  descricao = forms.CharField(widget=forms.Textarea)
+  CNPJ = forms.CharField(max_length=14, required=True)
+  telefone = forms.CharField(max_length=15, required=True)
 
   class Meta:
     model = Salao
+    fields = '__all__'
     widgets = {
       'nome' : forms.TextInput(attrs={
         'class': 'form-control form-control-user',
