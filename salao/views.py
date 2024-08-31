@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-
-from salao.models import Salao
+from .forms import SalaoForm
+from .models import Salao
 
 # Create your views here.
 def salao_list(request):

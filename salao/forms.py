@@ -1,7 +1,7 @@
 from django import forms
-from salao.models import Salao
+from .models import Salao
 
-class SalaoForm(forms.Form):
+class SalaoForm(forms.ModelForm):
   # Define your form fields here
   nome = forms.TextInput(max_length=100)
   endereco = forms.TextInput(max_length=200)
