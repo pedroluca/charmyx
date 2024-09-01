@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Salões</h1>
+            <a href="/saloes/add/" class="btn btn-primary">Novo Salão</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for salao in saloes %}
+                    <tr>
+                        <td>{{ salao.nome }}</td>
+                        <td>{{ salao.endereco }}</td>
+                        <td>{{ salao.telefone }}</td>
+                        <td>
+                            <a href="/saloes/edit/{{ salao.id }}" class="btn btn-warning">Editar</a>
+                            <a href="/saloes/delete/{{ salao.id }}" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+{% endblock %}
