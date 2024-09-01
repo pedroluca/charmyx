@@ -7,8 +7,8 @@ def salao_list(request):
   saloes = Salao.objects.all()
   return render(request,'salao/salao_list.html', {'saloes': saloes})
 
-def salao_detail(request, id):
-  salao = Salao.objects.get(id=id)
+def salao_detail(request, salao_id):
+  salao = Salao.objects.get(pk=salao_id)
   return render(request, 'salao/salao_detail.html', {'salao': salao})
 
 def salao_add(request):
@@ -19,10 +19,10 @@ def salao_add(request):
       return redirect('salao_list')
   else:
     form = SalaoForm()
-  return render(request, 'salao/salao_form.html', {'form': form})
+  return render(request, 'salao/salao_add.html', {'form': form})
 
-def salao_edit(request, id):
-  salao = Salao.objects.get(id=id)
+def salao_edit(request, salao_id):
+  salao = Salao.objects.get(pk=salao_id)
   if request.method == 'POST':
     form = SalaoForm(request.POST, instance=salao)
     if form.is_valid():
@@ -30,9 +30,8 @@ def salao_edit(request, id):
       return redirect('salao_list')
   else:
     form = SalaoForm(instance=salao)
-  return render(request, 'salao/salao_form.html', {'form': form})
+  return render(request, 'salao/salao_edit.html', {'form': form})
 
-def salao_delete(request, id):
-  salao = Salao.objects.get(id=id)
-  salao.delete()
+def salao_delete(request, salao_id):
+  salao = Salao.objects.get(pk=salao_id).delete()
   return redirect('salao_list')
