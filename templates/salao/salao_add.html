@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row" style="background-color: white; border-radius: 10px;">
+    <div class="col-md-12">
+      <a href="/salao/" class="btn btn-primary mt-3">Voltar</a>
+      <h1>Cadastrar salão</h1>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="multisteps-form__content">
+          <div class="row mt-3">
+            <div class="col-12 col-sm-6">
+              <label>{{ form.nome.label }}</label>
+              {{ form.nome }}
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+              <label>{{ form.CNPJ.label }}</label>
+              {{ form.CNPJ }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-sm-6">
+              <label>{{ form.endereco.label }}</label>
+              {{ form.endereco }}
+            </div>
+            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+              <label>{{ form.telefone.label }}</label>
+              {{ form.telefone }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.descricao.label }}</label>
+              {{ form.descricao }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button class="btn bg-gradient-dark btn-lg" type="submit" title="Next">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
