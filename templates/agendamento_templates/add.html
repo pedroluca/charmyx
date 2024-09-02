@@ -1,0 +1,8 @@
+{% comment %} {%extends '_base.html'%}
+{%block content%} {% endcomment %}
+    <h1>Adicionar Agendamento</h1>
+    <form method="POST" action="/agendamento/add/">
+    {% csrf_token %}
+    {{agendamento.as_p}}
+    <input type="submit" value="Salvar" class="btn btn-primary">
+{% comment %} {%endblock%} {% endcomment %}
