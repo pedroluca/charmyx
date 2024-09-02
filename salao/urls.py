@@ -7,5 +7,5 @@ urlpatterns = [
   path('add/', views.salao_add, name='salao_add'),
   path('edit/<int:salao_id>/', views.salao_edit, name='salao_edit'),
   path('delete/<int:salao_id>/', views.salao_delete, name='salao_delete'),
-  path('<int:salao_id>/produtos/', include('produto.urls'))
+  path('<int:salao_id>/produto/', include('produto.urls'))
 ]

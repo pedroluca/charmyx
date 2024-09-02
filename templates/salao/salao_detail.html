@@ -12,9 +12,9 @@
         </div>
         <div class="col-lg-5 mx-auto">
           <h3 class="mt-lg-0 mt-4">{{ salao.nome }}</h3>
-          <br>
+          <!-- <br>
           <span class="badge badge-success">In Stock</span>
-          <br>
+          <br> -->
           <p class="mt-4"><strong>Descrição: </strong>{{ salao.descricao }}</p>
           <p><strong>Endereço: </strong>{{ salao.endereco }}</p>
           <p><strong>Telefone: </strong>{{ salao.telefone }}</p>
@@ -22,42 +22,150 @@
         </div>
         <div class="row mt-5">
           <div class="col-12">
-          <h5 class="ms-3">Serviços e Produtos</h5>
+          <h5 class="ms-3">Serviços</h5>
           <div class="table table-responsive">
           <table class="table align-items-center mb-0">
-          <thead>
-          <tr>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
-          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Valor</th>
-          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Disponibilidade</th>
-          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-          <td>
-          <div class="d-flex px-2 py-1">
-          <div>
-          <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/product-thumb-1.jpg" class="avatar avatar-md me-3" alt="table image">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Valor</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Disponibilidade</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div>
+                      <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/product-thumb-1.jpg" class="avatar avatar-md me-3" alt="table image">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">Christopher Knight Home</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-sm text-secondary mb-0">$89.53</p>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="progress mx-auto">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-sm">230019</span>
+                </td>
+              </tr> -->
+              {% if servicos %}
+              {% for servico in servicos %}
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div>
+                      <img src="{{ servico.url_image }}" class="avatar avatar-md me-3" alt="table image">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm"><a href="servico/{{ servico.id }}">{{ servico.nome }}</a></h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-sm text-secondary mb-0">R${{ servico.preco }}</p>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="progress mx-auto">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-sm">{{ servico.id }}</span>
+                </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  <p class="text-sm text-secondary mb-0">Nenhum serviço cadastrado</p>
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
           </div>
-          <div class="d-flex flex-column justify-content-center">
-          <h6 class="mb-0 text-sm">Christopher Knight Home</h6>
           </div>
-          </div>
-          </td>
-          <td>
-          <p class="text-sm text-secondary mb-0">$89.53</p>
-          </td>
-          <td class="align-middle text-sm">
-          <div class="progress mx-auto">
-          <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          </td>
-          <td class="align-middle text-center">
-          <span class="text-secondary text-sm">230019</span>
-          </td>
-          </tr>
-          </tbody>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12">
+          <h5 class="ms-3">Produtos</h5>
+          <div class="table table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Valor</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Disponibilidade</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div>
+                      <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/product-thumb-1.jpg" class="avatar avatar-md me-3" alt="table image">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">Christopher Knight Home</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-sm text-secondary mb-0">$89.53</p>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="progress mx-auto">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-sm">230019</span>
+                </td>
+              </tr> -->
+              {% if produtos %}
+              {% for produto in produtos %}
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div>
+                      <img src="{{ produto.url_image }}" class="avatar avatar-md me-3" alt="table image">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm"><a href="produto/{{ produto.id }}">{{ produto.nome }}</a></h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-sm text-secondary mb-0">R${{ produto.preco }}</p>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="progress mx-auto">
+                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-sm">{{ produto.id }}</span>
+                </td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  <p class="text-sm text-secondary mb-0">Nenhum produto cadastrado</p>
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
           </table>
           </div>
           </div>
