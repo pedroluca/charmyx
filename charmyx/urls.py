@@ -9,4 +9,6 @@ urlpatterns = [
   path('cliente/', include('cliente.urls')),
   path('', lambda request: render(request, 'index.html')),
   path('pessoa/', include('django.contrib.auth.urls')),
+  path('agendamento/', include('agendamento.urls')),
+  path('servico/', include('servico.urls')),
 ]

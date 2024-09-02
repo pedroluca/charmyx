@@ -4,7 +4,7 @@ from agendamento.models import Agendamento
 class AgendamentoForm(ModelForm):
     class Meta:
         model = Agendamento
-        fields = ['horario', 'data', 'observacao', 'status', 'servico_id', 'cliente_id']
+        fields = ['horario', 'data', 'observacao', 'cliente_id']
 
         widgets = {
             'horario': TimeInput(attrs={
@@ -20,9 +20,5 @@ class AgendamentoForm(ModelForm):
             'observacao': TextInput(attrs={
                 'class': 'form-control form-control-user',
                 'placeholder': 'Observação do agendamento'
-            }),
-            'status': TextInput(attrs={
-                'class': 'form-control form-control-user',
-                'placeholder': 'Status do agendamento'
             })
         }
