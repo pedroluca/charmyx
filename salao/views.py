@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from .forms import SalaoForm
 from .models import Salao
+from produto.views import produto_list
 
 # Create your views here.
 def salao_list(request):
@@ -9,7 +10,8 @@ def salao_list(request):
 
 def salao_detail(request, salao_id):
   salao = Salao.objects.get(pk=salao_id)
-  return render(request, 'salao/salao_detail.html', {'salao': salao})
+  produtos = produto_list(request, salao_id)
+  return render(request, 'salao/salao_detail.html', {'salao': salao, 'produtos': produtos})
 
 def salao_add(request):
   if request.method == 'POST':

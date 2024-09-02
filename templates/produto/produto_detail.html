@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+  <div class="card">
+    <div class="card-body">
+      <a href="/salao/{{ salao_id }}" class="btn btn-primary mt-3">Voltar</a>
+      <h5 class="mb-4">Salão: {{ salao.nome }}</h5>
+      <div class="row">
+        <div class="col-xl-5 col-lg-6 text-center">
+          <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{ produto.url_image }}" alt="chair">
+        </div>
+        <div class="col-lg-5 mx-auto">
+          <h3 class="mt-lg-0 mt-4">{{ produto.nome }}</h3>
+          <br>
+          <span class="badge badge-success">In Stock</span>
+          <br>
+          <p class="mt-4"><strong>Descrição: </strong>{{ produto.descricao }}</p>
+          <p><strong>Preço: </strong>{{ produto.preco }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

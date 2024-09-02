@@ -3,66 +3,54 @@
 {% block content %}
 
 <div class="container">
-    <div class="row" style="background-color: white; border-radius: 10px;">
-        <div class="col-md-12">
-            <h1>Salões</h1>
-            <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Endereço</th>
-                        <th>Telefone</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   {% if saloes %}
-                    {% for salao in saloes %}
-                    <tr>
-                        <td><a href="{{ salao.id }}/">{{ salao.nome }}</a></td>
-                        <td>{{ salao.endereco }}</td>
-                        <td>{{ salao.telefone }}</td>
-                        <td>
-                            <a href="/salao/edit/{{ salao.id }}" class="btn btn-warning">Editar</a>
-                            <button onclick="alertMessage('{{ salao.id }}')" class="btn btn-danger">Excluir</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                  {% else %}
-                    <tr>
-                        <td colspan="4">Nenhum salão cadastrado</td>
-                    </tr>
-                  {% endif %}
-                </tbody>
-            </table>
+  <div class="row" style="background-color: white; border-radius: 10px;">
+    <div class="col-md-12">
+      <h1>Salões</h1>
+      <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
+      {% if saloes %}
+        <div class="row">
+          {% for salao in saloes %}
+            <div class="col-md-4">
+              <div class="card mb-4" style="height: 200px;">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="{{ salao.id }}/">{{ salao.nome }}</a></h5>
+                  <p class="card-text">{{ salao.telefone }}</p>
+                  <p class="card-text">{{ salao.endereco }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
         </div>
+      {% else %}
+        <p>Nenhum salão cadastrado</p>
+      {% endif %}
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function alertMessage(salaoId) {
-            Swal.fire({
-                title: "Tem certeza?",
-                text: "Você não poderá reverter essa ação!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Sim, deletar!",
-                cancelButtonText: "Cancelar"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                  Swal.fire({
-                    title: "Deletado!",
-                    text: "O salão foi deletado.",
-                    icon: "success",
-                    showConfirmButton: false
-                  })
-                  window.location.href = '/salao/delete/' + salaoId
-                }
-            })
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function alertMessage(salaoId) {
+      Swal.fire({
+        title: "Tem certeza?",
+        text: "Você não poderá reverter essa ação!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, deletar!",
+        cancelButtonText: "Cancelar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deletado!",
+            text: "O salão foi deletado.",
+            icon: "success",
+            showConfirmButton: false
+          })
+          window.location.href = '/salao/delete/' + salaoId
         }
-    </script>
+      })
+    }
+  </script>
 </div>
   
 {% endblock %}
