@@ -8,6 +8,8 @@ class Salao(models.Model):
   descricao = models.TextField()
   CNPJ = models.CharField(max_length=14)
   telefone = models.CharField(max_length=15)
+  proprietario = models.ForeignKey('proprietario.Proprietario', on_delete=models.CASCADE)
+  url_image = models.CharField(max_length=250)
   # Add more fields as needed
 
   def __str__(self):

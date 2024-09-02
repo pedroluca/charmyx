@@ -4,7 +4,14 @@ from .models import Produto
 class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['nome', 'preco', 'descricao', 'quantidade_estoque', 'url_image']
+        fields = ['nome', 'preco', 'descricao', 'quantidade_estoque']
+        exclude = ['salao']
+        labels = {
+            'nome': 'Nome',
+            'preco': 'Preço',
+            'descricao': 'Descrição',
+            'quantidade_estoque': 'Quantidade em estoque'
+        }
         widgets = {
             'nome': forms.TextInput(attrs={
                 'class': 'form-control form-control-user',
@@ -21,9 +28,5 @@ class ProdutoForm(forms.ModelForm):
             'quantidade_estoque': forms.NumberInput(attrs={
                 'class': 'form-control form-control-user',
                 'placeholder': 'Quantidade em estoque'
-            }),
-            'url_image': forms.TextInput(attrs={
-                'class': 'form-control form-control-user',
-                'placeholder': 'URL da imagem do produto'
-            }),
+            })
         }

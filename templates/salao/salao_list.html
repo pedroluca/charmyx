@@ -6,7 +6,9 @@
   <div class="row" style="background-color: white; border-radius: 10px;">
     <div class="col-md-12">
       <h1>Salões</h1>
-      <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
+      {% if is_proprietario %}
+        <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
+      {% endif %}
       {% if saloes %}
         <div class="row">
           {% for salao in saloes %}
@@ -26,31 +28,6 @@
       {% endif %}
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    function alertMessage(salaoId) {
-      Swal.fire({
-        title: "Tem certeza?",
-        text: "Você não poderá reverter essa ação!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Sim, deletar!",
-        cancelButtonText: "Cancelar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Deletado!",
-            text: "O salão foi deletado.",
-            icon: "success",
-            showConfirmButton: false
-          })
-          window.location.href = '/salao/delete/' + salaoId
-        }
-      })
-    }
-  </script>
 </div>
   
 {% endblock %}

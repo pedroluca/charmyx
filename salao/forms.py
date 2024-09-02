@@ -5,6 +5,7 @@ class SalaoForm(forms.ModelForm):
   class Meta:
     model = Salao
     fields = ['nome', 'endereco', 'descricao', 'CNPJ', 'telefone']
+    exclude = ['proprietario']
     labels = {
       'nome': 'Nome',
       'endereco': 'Endereço',

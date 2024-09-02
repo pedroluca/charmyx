@@ -5,29 +5,25 @@
 <div class="container">
   <div class="row" style="background-color: white; border-radius: 10px;">
     <div class="col-md-12">
-      <a href="{% url 'salao_detail' salao.id %}" class="btn btn-primary mt-3">Voltar</a>
-      <h1>Editar salão: {{ form.nome.value }}</h1>
+      <a href="{% url 'produto_detail' salao_id=salao_id produto_id=produto.id %}" class="btn btn-primary mt-3">Voltar</a>
+      <h1>Editar produto: {{ form.nome.value }} </h1>
       <form method="POST">
         {% csrf_token %}
         <div class="multisteps-form__content">
           <div class="row mt-3">
-            <div class="col-12 col-sm-6">
+            <div class="col-12 col-lg-12">
               <label>{{ form.nome.label }}</label>
               {{ form.nome }}
             </div>
-            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-              <label>{{ form.CNPJ.label }}</label>
-              {{ form.CNPJ }}
-            </div>
           </div>
           <div class="row mt-3">
-            <div class="col-12 col-sm-6">
-              <label>{{ form.endereco.label }}</label>
-              {{ form.endereco }}
-            </div>
             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-              <label>{{ form.telefone.label }}</label>
-              {{ form.telefone }}
+              <label>{{ form.preco.label }}</label>
+              {{ form.preco }}
+            </div>
+            <div class="col-12 col-sm-6">
+              <label>{{ form.quantidade_estoque.label }}</label>
+              {{ form.quantidade_estoque }}
             </div>
           </div>
           <div class="row mt-3">
