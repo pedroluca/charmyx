@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'produto',
     'pessoa',
     'cliente',
-    'proprietario'
+    'proprietario',
+    'servico',
+    'agendamento',
 ]
 
 MIDDLEWARE = [
