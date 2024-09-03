@@ -127,7 +127,7 @@ STATICFILES_DIRS = [
     str(BASE_DIR) + '/static'
     ]
 
-LOGIN_REDIRECT_URL = '/saloes/'
+LOGIN_REDIRECT_URL = '/salao/'
 LOGOUT_REDIRECT_URL = '/pessoa/login/'
 
 # Default primary key field type
