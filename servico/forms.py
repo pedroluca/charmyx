@@ -1,31 +1,30 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, TimeInput, NumberInput
 from servico.models import Servico
 
 
 class ServicoForm(ModelForm):
     class Meta:
         model = Servico
-        fields = ['nome', 'descricao', 'valor', 'duracao', 'salao_id']
+        fields = ['nome', 'descricao', 'valor', 'duracao']
 
-        Widgets = {
+        widgets = {
             'nome': TextInput(attrs={
-                'class': 'form-control form-control-user',
+                'class': 'multisteps-form__input form-control',
                 'placeholder': 'Nome do serviço'
             }),
             'descricao': TextInput(attrs={
-                'class': 'form-control form-control-user',
+                'class': 'multisteps-form__input form-control',
                 'placeholder': 'Descrição do serviço'
             }),
-            'valor': TextInput(attrs={
-                'class': 'form-control form-control-user',
-                'placeholder': 'Valor do serviço'
+            'valor': NumberInput(attrs={
+                'class': 'multisteps-form__input form-control',
+                'placeholder': 'Valor do serviço',
+                'step': '1.0' 
             }),
-            'duracao': TextInput(attrs={
-                'class': 'form-control form-control-user',
-                'placeholder': 'Duração do serviço'
-            }),
-            'salao_id': TextInput(attrs={
-                'class': 'form-control form-control-user',
-                'placeholder': 'Salão do serviço'
+            'duracao': TimeInput(attrs={
+                'class': 'multisteps-form__input form-control',
+                'placeholder': 'Duração do serviço',
+                'type': 'time'
             }),
         }
+    

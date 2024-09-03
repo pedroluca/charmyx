@@ -24,4 +24,4 @@ class Agendamento(models.Model):
     cliente_id = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nome
+        return f"Agendamento {self.id} - {self.cliente_id} - {self.servico_id}"

@@ -1,4 +1,5 @@
 from django.db import models
+from proprietario.models import Proprietario
 
 # Create your models here.
 class Salao(models.Model):
@@ -8,7 +9,7 @@ class Salao(models.Model):
   descricao = models.TextField()
   CNPJ = models.CharField(max_length=14)
   telefone = models.CharField(max_length=15)
-  # Add more fields as needed
+ 
 
   def __str__(self):
     return self.nome  # Return a string representation of your model instance

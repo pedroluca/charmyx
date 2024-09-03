@@ -8,7 +8,7 @@ class Servico(models.Model):
     descricao = models.TextField()
     valor = models.DecimalField(max_digits=10, decimal_places=2)
     duracao = models.DurationField()
-    salao_id = models.ForeignKey(Salao, on_delete=models.CASCADE)
+    salao = models.ForeignKey(Salao, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome

@@ -7,5 +7,7 @@ urlpatterns = [
     path("edit/<int:id>/", views.agendamento_edit, name="agendamento_edit"),
     path("delete/<int:id>/", views.agendamento_delete, name="agendamento_delete"),
     path("<int:id>/", views.agendamento_detail, name="agendamento_detail"),
-  
+    path('confirm/<int:id>/', views.agendamento_confirm, name='agendamento_confirm'),
+    path('complete/<int:id>/', views.agendamento_complete, name='agendamento_complete'),
+    
 ] 

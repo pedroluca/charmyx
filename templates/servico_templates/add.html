@@ -1,8 +1,0 @@
-{% comment %} {%extends '_base.html'%}
-{%block content%} {% endcomment %}
-<h1>Adicionar Servico</h1>
-<form method="POST" action="/servico/add/">
-{% csrf_token %}
-{{servico.as_p}}
-<input type="submit" value="Salvar" class="btn btn-primary">
-{% comment %} {%endblock%} {% endcomment %}
