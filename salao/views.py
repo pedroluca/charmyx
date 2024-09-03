@@ -3,6 +3,8 @@ from proprietario.models import Proprietario
 from .forms import SalaoForm
 from .models import Salao
 from produto.views import produto_list
+from servico.views import servico_list
+from agendamento.views import agendamento_list
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 def salao_list(request):
@@ -13,8 +15,10 @@ def salao_list(request):
 def salao_detail(request, salao_id):
   salao = Salao.objects.get(pk=salao_id)
   produtos = produto_list(request, salao_id)
+  servicos = servico_list(request, salao_id)
+  agendamentos = agendamento_list(request, salao_id)
   is_proprietario = request.user.pk == salao.proprietario.pk
-  return render(request, 'salao/salao_detail.html', {'salao': salao, 'produtos': produtos, 'is_proprietario': is_proprietario})
+  return render(request, 'salao/salao_detail.html', {'salao': salao, 'produtos': produtos, 'is_proprietario': is_proprietario, 'servicos': servicos,  'agendamentos': agendamentos})
 
 @login_required
 def salao_add(request):

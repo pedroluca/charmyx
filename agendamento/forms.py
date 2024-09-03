@@ -14,7 +14,13 @@ class AgendamentoForm(forms.ModelForm):
     
     # Combine os intervalos de manhã e tarde
     HORARIOS_DISPONIVEIS = HORARIOS_MANHA + HORARIOS_TARDE
-    horario = forms.ChoiceField(choices=HORARIOS_DISPONIVEIS)
+    horario = forms.ChoiceField(
+        choices=HORARIOS_DISPONIVEIS,
+        widget=forms.Select(attrs={
+            'class': 'form-control form-control-user',
+            'placeholder': 'Horário do agendamento'
+        })
+    )
 
     class Meta:
         model = Agendamento

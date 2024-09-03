@@ -5,29 +5,25 @@
 <div class="container">
   <div class="row" style="background-color: white; border-radius: 10px;">
     <div class="col-md-12">
-      <a href="{% url 'salao_detail' salao_id=salao.id %}" class="btn btn-primary mt-3">Voltar</a>
-      <h1>Editar serviço</h1>
-      <form method="POST" action="">
+      <a href="{% url 'salao_detail' salao_id=salao_id %}" class="btn btn-primary mt-3">Voltar</a>
+      <h1>Editar agendamento: {{ agendamento.nome.value }}</h1>
+      <form method="POST">
         {% csrf_token %}
         <div class="multisteps-form__content">
           <div class="row mt-3">
             <div class="col-12 col-sm-6">
-              <label>Nome</label>
-              {{ servico.nome }}
+              <label>Horário</label>
+              {{ agendamento.horario }}
             </div>
             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-              <label>Descrição</label>
-              {{ servico.descricao }}
+              <label>Data</label>
+              {{ agendamento.data }}
             </div>
           </div>
           <div class="row mt-3">
-            <div class="col-12 col-sm-6">
-              <label>Valor</label>
-              {{ servico.valor }}
-            </div>
-            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-              <label>Duração</label>
-              {{ servico.duracao }}
+            <div class="col-12 col-lg-12">
+              <label>Observação</label>
+              {{ agendamento.observacao }}
             </div>
           </div>
           <div class="row mt-3">
@@ -40,4 +36,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

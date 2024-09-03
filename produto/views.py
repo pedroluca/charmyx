@@ -4,7 +4,6 @@ from .models import Produto
 from salao.models import Salao
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
 def produto_list(request, salao_id):
   produtos = Produto.objects.filter(salao=salao_id)
   return produtos
