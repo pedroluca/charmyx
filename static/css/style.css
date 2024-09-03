@@ -8237,7 +8237,7 @@ button:focus {
   padding-top: 150px;
   padding-bottom: 110px;
   background-color: #ffffff;
-  background-image: url(../images/Footer_bg.svg);
+  background-image: url("/static/img/Footer_bg.svg");
   background-repeat: no-repeat;
   background-size: cover; }
   .foi-footer .footer-content {
@@ -8344,7 +8344,7 @@ html {
       font-size: 45px;
       line-height: 1.22; }
   .foi-header.landing-header {
-    background-image: url("../images/bg_1@2x.png"), url("../images/Bg_2@2x.png");
+    background-image: url("/static/img/bg_1@2x.png"), url("/static/img/Bg_2@2x.png");
     background-repeat: no-repeat;
     background-repeat: no-repeat;
     background-size: 167px, 65%;
