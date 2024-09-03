@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row" style="background-color: white; border-radius: 10px;">
+    <div class="col-md-12">
+      <a href="{% url 'produto_detail' salao_id=salao_id produto_id=produto.id %}" class="btn btn-primary mt-3">Voltar</a>
+      <h1>Editar produto: {{ form.nome.value }} </h1>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="multisteps-form__content">
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.url_image.label }}</label>
+              {{ form.url_image }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.nome.label }}</label>
+              {{ form.nome }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+              <label>{{ form.preco.label }}</label>
+              {{ form.preco }}
+            </div>
+            <div class="col-12 col-sm-6">
+              <label>{{ form.quantidade_estoque.label }}</label>
+              {{ form.quantidade_estoque }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.descricao.label }}</label>
+              {{ form.descricao }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button class="btn bg-gradient-dark btn-lg" type="submit" title="Next">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

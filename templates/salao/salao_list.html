@@ -4,20 +4,25 @@
 
 <div class="container">
   <div class="row" style="background-color: white; border-radius: 10px;">
-    <div class="col-md-12">
+    <div class="col-md-12 mt-4">
       <h1>Salões</h1>
-      <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
+      {% if is_proprietario %}
+        <a href="/salao/add/" class="btn btn-primary mb-3">Registrar salão</a>
+      {% endif %}
       {% if saloes %}
         <div class="row">
           {% for salao in saloes %}
             <div class="col-md-4">
-              <div class="card mb-4" style="height: 200px;">
-                <div class="card-body">
-                  <h5 class="card-title"><a href="{{ salao.id }}/">{{ salao.nome }}</a></h5>
-                  <p class="card-text">{{ salao.telefone }}</p>
-                  <p class="card-text">{{ salao.endereco }}</p>
+              <a href="{{ salao.id }}/" class="card mb-4 shadow-sm text-decoration-none text-dark" style="display: block;">
+                <div class="card">
+                  <img src="{{ salao.url_image.url }}" class="card-img-top" alt="{{ salao.nome }}" style="height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ salao.nome }}</h5>
+                    <p class="card-text">Tel: {{ salao.telefone }}</p>
+                    <p class="card-text">Endereço: {{ salao.endereco }}</p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           {% endfor %}
         </div>
@@ -26,31 +31,6 @@
       {% endif %}
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    function alertMessage(salaoId) {
-      Swal.fire({
-        title: "Tem certeza?",
-        text: "Você não poderá reverter essa ação!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Sim, deletar!",
-        cancelButtonText: "Cancelar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Deletado!",
-            text: "O salão foi deletado.",
-            icon: "success",
-            showConfirmButton: false
-          })
-          window.location.href = '/salao/delete/' + salaoId
-        }
-      })
-    }
-  </script>
 </div>
-  
+
 {% endblock %}

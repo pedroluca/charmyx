@@ -9,7 +9,9 @@ class Salao(models.Model):
   descricao = models.TextField()
   CNPJ = models.CharField(max_length=14)
   telefone = models.CharField(max_length=15)
- 
+  proprietario = models.ForeignKey('proprietario.Proprietario', on_delete=models.CASCADE)
+  url_image = models.ImageField(upload_to='salao/', blank=True, null=True, default='salao/default-salon.jpeg')
+  # Add more fields as needed
 
   def __str__(self):
     return self.nome  # Return a string representation of your model instance

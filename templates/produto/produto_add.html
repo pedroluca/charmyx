@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row" style="background-color: white; border-radius: 10px;">
+    <div class="col-md-12">
+      <a href="{% url 'salao_detail' salao.id %}" class="btn btn-primary mt-3">Voltar</a>
+      <h1>Cadastrar produto</h1>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="multisteps-form__content">
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.url_image.label }}</label>
+              {{ form.url_image }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.nome.label }}</label>
+              {{ form.nome }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+              <label>{{ form.preco.label }}</label>
+              {{ form.preco }}
+            </div>
+            <div class="col-12 col-sm-6">
+              <label>{{ form.quantidade_estoque.label }}</label>
+              {{ form.quantidade_estoque }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.descricao.label }}</label>
+              {{ form.descricao }}
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <button class="btn bg-gradient-dark btn-lg" type="submit" name="action" value="save">Salvar</button>
+              <button class="btn bg-gradient-dark btn-lg ms-4" type="submit" name="action" value="save_add_another">Salvar e adicionar outro produto</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
