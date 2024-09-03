@@ -12,7 +12,7 @@
       <h5 class="mb-4">Detalhes do salão</h5>
       <div class="row">
         <div class="col-xl-5 col-lg-6 text-center">
-          <img class="w-100 border-radius-lg shadow-lg mx-auto" src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/product-thumb.jpg" alt="chair">
+          <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{ salao.url_image.url }}" alt="chair">
         </div>
         <div class="col-lg-5 mx-auto">
           <h3 class="mt-lg-0 mt-4">{{ salao.nome }}</h3>
@@ -43,7 +43,7 @@
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div>
-                      <img src="{{ servico.url_image }}" class="avatar avatar-md me-3" alt="table image">
+                      <img src="{{ servico.url_image.url }}" class="avatar avatar-md me-3" alt="table image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm"><a href="servico/{{ servico.id }}">{{ servico.nome }}</a></h6>
@@ -94,7 +94,7 @@
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div>
-                      <img src="{{ produto.url_image }}" class="avatar avatar-md me-3" alt="table image">
+                      <img src="{{ produto.url_image.url }}" class="avatar avatar-md me-3" alt="table image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm"><a href="produto/{{ produto.id }}">{{ produto.nome }}</a></h6>

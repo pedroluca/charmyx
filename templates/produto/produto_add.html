@@ -7,9 +7,15 @@
     <div class="col-md-12">
       <a href="{% url 'salao_detail' salao.id %}" class="btn btn-primary mt-3">Voltar</a>
       <h1>Cadastrar produto</h1>
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="multisteps-form__content">
+          <div class="row mt-3">
+            <div class="col-12 col-lg-12">
+              <label>{{ form.url_image.label }}</label>
+              {{ form.url_image }}
+            </div>
+          </div>
           <div class="row mt-3">
             <div class="col-12 col-lg-12">
               <label>{{ form.nome.label }}</label>

@@ -4,9 +4,10 @@ from .models import Salao
 class SalaoForm(forms.ModelForm):
   class Meta:
     model = Salao
-    fields = ['nome', 'endereco', 'descricao', 'CNPJ', 'telefone']
+    fields = ['url_image', 'nome', 'endereco', 'descricao', 'CNPJ', 'telefone']
     exclude = ['proprietario']
     labels = {
+      'url_image': 'Imagem do salão',
       'nome': 'Nome',
       'endereco': 'Endereço',
       'descricao': 'Descrição',
@@ -14,6 +15,10 @@ class SalaoForm(forms.ModelForm):
       'telefone': 'Telefone'
     }
     widgets = {
+      'url_image': forms.ClearableFileInput(attrs={
+        'class': 'multisteps-form__input form-control',
+        'accept': 'image/*'
+      }),
       'nome' : forms.TextInput(attrs={
         'class': 'multisteps-form__input form-control',
         'placeholder': 'ex: Salão da Leila'

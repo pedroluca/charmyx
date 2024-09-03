@@ -7,13 +7,14 @@
     <div class="col-md-12">
       <h1>Salões</h1>
       {% if is_proprietario %}
-        <a href="/salao/add/" class="btn btn-primary">Novo Salão</a>
+        <a href="/salao/add/" class="btn btn-primary mb-3">Registrar salão</a>
       {% endif %}
       {% if saloes %}
         <div class="row">
           {% for salao in saloes %}
             <div class="col-md-4">
-              <div class="card mb-4" style="height: 200px;">
+              <div class="card mb-4 shadow-sm">
+                <img src="{{ salao.url_image.url }}" class="card-img-top" alt="{{ salao.nome }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body">
                   <h5 class="card-title"><a href="{{ salao.id }}/">{{ salao.nome }}</a></h5>
                   <p class="card-text">{{ salao.telefone }}</p>
@@ -29,5 +30,5 @@
     </div>
   </div>
 </div>
-  
+
 {% endblock %}

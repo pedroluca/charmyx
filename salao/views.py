@@ -19,12 +19,13 @@ def salao_detail(request, salao_id):
 @login_required
 def salao_add(request):
   if request.method == 'POST':
-    form = SalaoForm(request.POST)
+    form = SalaoForm(request.POST, request.FILES)
     if form.is_valid():
       salao = form.save(commit=False)
       try:
         proprietario = Proprietario.objects.get(pk=request.user.pk)
         salao.proprietario = proprietario
+        salao.url_image = request.FILES['url_image']
         salao.save()
       except:
         return redirect('salao_add')  # Redirect back to salao_add if proprietario not found
