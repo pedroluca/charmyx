@@ -6,55 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FOI App Landing Page</title>
+    <title>Charmix | Login</title>
     <link rel="stylesheet" href="{% static 'vendor/fontawesome-free/css/all.min.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="icon" href="{% static 'img/charmix-logo.ico' %}" type="image/x-icon">
 </head>
 
 <body>
     <header class="foi-header">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light foi-navbar">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{% static 'img/logo.svg'%}" alt="FOI">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/charmix-logo.png'%}" alt="FOI" style="max-width:70px">
                 </a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="features.html">Features</a>
-                        </li>
-                        <li class="nav-item active dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu" aria-labelledby="pagesMenu">
-                                <a class="dropdown-item" href="blog.html">Blog</a>
-                                <a class="dropdown-item" href="login.html">Login <span class="sr-only">(current)</span></a>
-                                <a class="dropdown-item" href="register.html">Register</a>
-                                <a class="dropdown-item" href="faq.html">FAQ</a>
-                                <a class="dropdown-item" href="404.html">404</a>
-                                <a class="dropdown-item" href="careers.html">Careers</a>
-                                <a class="dropdown-item" href="blog-single.html">Single blog</a>
-                                <a class="dropdown-item" href="privacy-policy.html">Privacy policy</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">contact</a>
-                        </li>
-                    </ul>
+                <div class="collapse navbar-collapse" id="collapsibleNavId" style="justify-content:end !important;">
+                    
                     <ul class="navbar-nav mt-2 mt-lg-0">
                         <li class="nav-item mr-2 mb-3 mb-lg-0">
-                            <a class="btn btn-secondary" href="register.html">Sign up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-secondary" href="login.html">Login</a>
+                            <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#userTypeModal">Cadastre-se</a>
                         </li>
                     </ul>
                 </div>
@@ -73,15 +46,22 @@
                                 <p class="auth-section-subtitle">Entre na sua conta para continuar</p>
                                 <form action="" method="POST">
                                     {% csrf_token %}
-                                    {{form.as_p}}
-                                    <button class="btn btn-primary btn-auth-submit" type="submit">Submit</button>
+                                    <div class="form-group">
+                                        <label for="{{ form.username.id_for_label }}">Nome de Usuário</label>
+                                        {{ form.username }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="{{ form.password.id_for_label }}">Senha</label>
+                                        {{ form.password }}
+                                    </div>
+                                    <button class="btn btn-primary btn-auth-submit" type="submit">Entrar</button>
                                 </form>
                                 <p class="mb-0">
-                                    <a href="registration/register.html"  class="text-dark font-weight-bold">Novo Usuário? Cadastre-se</a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#userTypeModal" class="text-dark font-weight-bold">Novo Usuário? Cadastre-se</a>
                                 </p>
                             </div>
                             <div class="col-md-6 d-flex align-items-center">
-                                <img src="{% static 'img/login.png'%}" alt="login" class="img-fluid">
+                                <img src="{% static 'img/Mobile login-cuate.png'%}" alt="login" class="img-fluid">
                             </div>
                         </div>
                     </section>
@@ -94,80 +74,80 @@
         <div class="container">
             <div class="row footer-content">
                 <div class="col-xl-6 col-lg-7 col-md-8">
-                    <h2 class="mb-0">Do you want to know more or just have a question? write to us.</h2>
+                    <h2 class="mb-0">Seu estilo, nosso compromisso.</h2>
                 </div>
+               
             </div>
-            <div class="row footer-widget-area">
+            <div class="row footer-widget-area" style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;">
                 <div class="col-md-3">
                     <div class="py-3">
-                        <img src="{% static 'img/logo-white.svg' %}" alt="FOI">
-                    </div>'
-                    <p class="font-os font-weight-semibold mb3">Get our mobile app</p>
-                    <div>
-                        <button class="btn btn-app-download mr-2"><img src="{% static 'img/ios.svg' %}" alt="App store"></button>
-                        <button class="btn btn-app-download"><img src="{% static 'img/android.svg' %}" alt="p'lay store"></button>
-                    </div>'
+                        <img src="{% static 'img/charmix-footer.png'%}" alt="FOI" style="max-width:300px">
+                    </div>
                 </div>
-                <div class="col-md-3 mt-3 mt-md-0">
-                    <nav>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Account</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">My tasks</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Projects</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Edit profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Activity</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-md-3 mt-3 mt-md-0">
-                    <nav>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Services</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Careers <span class="badge badge-pill badge-secondary ml-3">Hiring</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Shop with us</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                
                 <div class="col-md-3 mt-3 mt-md-0">
                     <p>
-                        &copy; foi. 2020 <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer" class="text-reset">BootstrapDash</a>.
+                        © 2024,
+                        made with <i class="fa fa-heart"></i> by
+                        Carlos Manoel, Pedro Luca & Pietra Macedo.</a>
                     </p>
-                    <p>All rights reserved.</p>
-                    <nav class="social-menu">
-                        <a href="#!"><img src="{% static 'img/facebook.svg'%}" alt="facebook"></a>
-                        <a href="#!"><img src="{% static 'img/instagram.svg'%}" alt="instagram"></a>
-                        <a href="#!"><img src="{% static 'img/twitter.svg'%}" alt="twitter"></a>
-                        <a href="#!"><img src="{% static 'img/youtube.svg'%}" alt="youtube"></a>
-                    </nav>
+                    <p>Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
-    <script src="{% static 'vendor/popper.js/popper.min.js'%}"></script>
-    <script src="{% static 'vendor/bootstrap/dist/js/bootstrap.min.js'%}"></script>
+     <!-- Modal -->
+     <div class="modal fade" id="userTypeModal" tabindex="-1" aria-labelledby="userTypeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userTypeModalLabel">Qual tipo de conta atende melhor às suas necessidades?</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-around">
+                        <button id="clientButton" class="btn btn-primary" onclick="window.location.href='/cliente/add/';">Cliente</button>
+                        <button id="ownerButton" class="btn btn-success" onclick="window.location.href='/proprietario/add/';">Proprietário</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            var inputs = document.querySelectorAll('input');
+            var usernameInput = document.querySelector('#id_username'); 
+            var passwordInput = document.querySelector('#id_password'); 
+            usernameInput.placeholder = 'Nome de Usuário';
+            passwordInput.placeholder = 'Senha';
+            inputs.forEach(function(input) {
+                input.classList.add('form-control');
+                
+                
+                if (!input.placeholder && input.type !== 'hidden') {
+                    input.placeholder = input.name || input.id;
+                }
+        
+                input.addEventListener('focus', function() {
+                    this.style.boxShadow = '0 0 5px rgba(0, 123, 255, 0.5)';
+                });
+        
+                input.addEventListener('blur', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
