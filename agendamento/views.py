@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .forms import AgendamentoForm
 from .models import Agendamento, Cliente
@@ -34,17 +35,28 @@ def agendamento_list(request, salao_id):
 
 def agendamento_add(request, salao_id):
     cliente = get_object_or_404(Cliente, id=request.user.id)
+    salao = get_object_or_404(Salao, id=salao_id)
 
     if request.method == 'POST':
-        form = AgendamentoForm(request.POST)
+        form = AgendamentoForm(request.POST, salao=salao)
         if form.is_valid():
             agendamento = form.save(commit=False)
-            agendamento.cliente_id = cliente 
-            agendamento.save()
-            salao_id = agendamento.servico_id.salao.id
-            return redirect(reverse('salao_detail', args=[salao_id]))
+            agendamento.cliente_id = cliente
+
+            # Verificar se já existe um agendamento para o mesmo serviço, data e horário
+            existe_agendamento = Agendamento.objects.filter(
+                data=agendamento.data,
+                horario=agendamento.horario
+            ).exists()
+
+            if existe_agendamento:
+                messages.error(request, 'O horário selecionado já está reservado.')
+            else:
+                agendamento.save()
+                return redirect(reverse('salao_detail', args=[salao_id]))
+
     else:
-        form = AgendamentoForm()
+        form = AgendamentoForm(salao=salao)
 
     return render(request, "agendamento/agendamento_add.html", {'agendamento': form, 'salao_id':salao_id})
 

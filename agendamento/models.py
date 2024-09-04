@@ -25,3 +25,5 @@ class Agendamento(models.Model):
 
     def __str__(self):
         return f"Agendamento {self.id} - {self.cliente_id} - {self.servico_id}"
+    
+    
