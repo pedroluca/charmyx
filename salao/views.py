@@ -17,8 +17,7 @@ def salao_detail(request, salao_id):
   salao = Salao.objects.get(pk=salao_id)
   produtos = produto_list(request, salao_id)
   servicos = servico_list(request, salao_id)
-  agendamentos = Agendamento.objects.exclude(status='FIN')#coloca essa que some os agendamentos finalizados
-  # agendamentos = agendamento_list(request, salao_id)
+  agendamentos = agendamento_list(request, salao_id).exclude(status='FIN')
   is_proprietario = request.user.pk == salao.proprietario.pk
   return render(request, 'salao/salao_detail.html', {'salao': salao, 'produtos': produtos, 'is_proprietario': is_proprietario, 'servicos': servicos,  'agendamentos': agendamentos})
 
