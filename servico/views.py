@@ -44,7 +44,8 @@ def servico_edit(request, id):
         form = ServicoForm(request.POST, instance=servico)
         if form.is_valid():
             form.save()
-            return redirect('servico_detail', salao_id=salao.id)
+            salao_id = servico.salao.id
+            return redirect(reverse('salao_detail', args=[salao_id]))
     else:
         form = ServicoForm(instance=servico)
     
