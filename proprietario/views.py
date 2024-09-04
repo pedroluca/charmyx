@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .forms import ProprietarioForm
 from django.contrib.auth.models import Group
@@ -15,6 +15,10 @@ def add(request):
             user.save()
             form.save_m2m()
 
+            
+            prop_group, created = Group.objects.get_or_create(name='Proprietarios')  
+            user.groups.add(prop_group) 
+            return redirect("/pessoa/login")
     else:
         form = ProprietarioForm()
     return render(request, "registration/register.html", {"form":form})
