@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .forms import ClienteForm
 from django.contrib.auth.models import Group
@@ -12,9 +12,13 @@ def add(request):
         print(form.errors)
         if form.is_valid():
             user = form.save(commit=False)
-            user.save()
+            user.save()  
             form.save_m2m()
 
+            
+            clientes_group, created = Group.objects.get_or_create(name='Clientes')  
+            user.groups.add(clientes_group)  
+            return redirect("/pessoa/login")
     else:
         form = ClienteForm()
     return render(request, "registration/register.html", {"form":form})
