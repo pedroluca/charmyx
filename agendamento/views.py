@@ -10,16 +10,25 @@ from servico.models import Servico
 
 
 def agendamento_list(request, salao_id):
-    salao = Salao.objects.get(pk=salao_id)
-    servico = Servico.objects.get(salao=salao)
-    if request.GET:
-        filtro = {}
-        for key, val in request.GET.lists():
-            filtro.update({key + "__contains": val[0]})
-        
-        agendamentos = Agendamento.objects.filter(**filtro)
+    salao = get_object_or_404(Salao, id=salao_id)
+    proprietario = salao.proprietario
+
+    if request.user.id == proprietario.id:
+        if request.GET:
+            filtro = {}
+            for key, val in request.GET.lists():
+                filtro.update({key + "__contains": val[0]})
+            agendamentos = Agendamento.objects.filter(servico_id__salao=salao, **filtro)
+        else:
+            agendamentos = Agendamento.objects.filter(servico_id__salao=salao)
     else:
-        agendamentos = Agendamento.objects.all()
+        if request.GET:
+            filtro = {}
+            for key, val in request.GET.lists():
+                filtro.update({key + "__contains": val[0]})
+            agendamentos = Agendamento.objects.filter(cliente_id=request.user, servico_id__salao=salao, **filtro)
+        else:
+            agendamentos = Agendamento.objects.filter(cliente_id=request.user, servico_id__salao=salao)
 
     return agendamentos
 
