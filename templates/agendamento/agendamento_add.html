@@ -34,6 +34,16 @@
                         <div class="col-12 text-center">
                             <button class="btn bg-gradient-dark btn-lg" type="submit" title="Next">Salvar</button>
                         </div>
+                        {% if messages %}
+                            <div class="container mt-3">
+                                {% for message in messages %}
+                                    <div class="alert alert-danger text-white alert-dismissible fade show" role="alert">
+                                        <strong>{{ message.tags|capfirst }}:</strong> {{ message }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </form>
